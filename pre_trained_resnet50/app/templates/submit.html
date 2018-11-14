@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<title>Simple Image Classification with pre-trained ResNet50</title>
+<h1>Photo Upload</h1>
+<form method="POST" enctype="multipart/form-data">
+     {{ form.hidden_tag() }}
+     {{ form.photo }}
+     {% for error in form.photo.errors %}
+         <span style="color: red;">{{ error }}</span>
+     {% endfor %}
+     {{ form.submit }}
+</form>
+
+{% if file_url %}
+<br>
+<img src="{{ file_url }}" width="50%">
+{% endif %}
+
+<h2> Probability of {{ tf_pred1 }} is {{ tf_pred_p1 }} </h2>
+<h2> Probability of {{ tf_pred2 }} is {{ tf_pred_p2 }} </h2>
+<h2> Probability of {{ tf_pred3 }} is {{ tf_pred_p3 }} </h2>
+
